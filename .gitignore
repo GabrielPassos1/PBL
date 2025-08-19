@@ -1,207 +1,201 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[codz]
-*$py.class
+loop = int(input("Digite qualquer número diferente de 0 caso deseje adentrar o programa "))
+Mega_da_Virada = 0
+Premio_bruto_MS = 0
+Concursos_MS = 0
+while loop != 0:
+    print("---MENU---\n")
+    menu_inicial= int(input("1-Mega-Sena\n2-Quina\n3-Lotofácil\n4-Estatísticas Gerais\n0-Sair\n"))
+    loop_MS = menu_inicial
+    loop_Q = menu_inicial
+    match menu_inicial:
+        case 1:
+            print("--MEGA-SENA--")
+            print("""Destinação:
+Prêmio Bruto Total = 46%%
+Sena(6 acertos) = 35%% do prêmio bruto
+Quina(5 acertos) = 19%% do prêmio bruto 
+Quadra(quatro acertos) = 19%% do prêmio bruto 
+Acumula para concursos finais 0 ou 5 = 22%% do prêmio bruto 
+Mega da Virada = 5%% do prêmio bruto 
+Seguridade Social = 17,32%% 
+Fundo Nacional de Cultura(FNC) = 3%% 
+Comitê Olímpico e Paralímpico = 1,7%% 
+Fundo Penitenciário Nacional(FUNPEN) = 3,14%% 
+Fundo Nacional de Segurança Pública (FNSP) = 9,26%% 
+Custos Operacionais (CAIXA) = 9,57%% 
+Outros encargos e taxas legais = 10,01%%\n""")
+            while loop_MS < 2:
+                menu_mega_sena = int(input("""1-Mega-Sena \n2-Mega da Virada\n"""))
 
-# C extensions
-*.so
+                if menu_mega_sena == 1:
+                    Concursos_MS += 1
+                    Valor_aposta_MS = float(input("Informe o valor de uma aposta na Mega Sena:")) #Registro do valor de uma aposta na mega cena normal.
+                    Quantidade_apostas = int(input(" Digite quantas apostas foram realizadas: ")) #Quantidade de apostas registradas.
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+                    #Distribuição do Dinheiro arrecadado
+                    Arrecadação = Valor_aposta_MS * Quantidade_apostas
+                    Premio_bruto_MS = Arrecadação * (46/100)
+                    
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+                    Premio_sena = Premio_bruto_MS * (35/100)
+                    Premio_quina = Premio_bruto_MS * (19/100)
+                    Premio_quadra = Premio_bruto_MS * (19/100)
+                    Premio_final_0ou5 = Premio_bruto_MS * (22/100)
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+                    if Concursos_MS % 5 == 0:               #Condicional para caso seja um concurso de número terminado em 5 ou 0
+                        Premio_bruto_MS += Premio_final_0ou5
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py.cover
-.hypothesis/
-.pytest_cache/
-cover/
+                    Mega_da_Virada = Premio_bruto_MS * (5/100)
+                    Seguridade_social = Arrecadação * (17.32/100)
+                    fnc = Arrecadação * (3/100)
+                    Comite_Olimpico_Paralimpico = Arrecadação * (1.7/100)
+                    funpen = Arrecadação * (3.14/100)
+                    fnsp = Arrecadação * (9.26/100)
+                    Custos_Operacionais = Arrecadação * (9.57/100)
+                    Imposto = Arrecadação * (10.01/100)
+                    
+                    for premiação in range(1,4,+1):                                               # Estrutura de repetição para registrar a quantidade de ganhadores.
+                        if premiação == 1:
+                            Sena = int(input("Digite a quantidade de ganhadores do prêmio por Sena:"))
 
-# Translations
-*.mo
-*.pot
+                        elif premiação == 2:
+                            Quina = int(input("Digite a quantidade de ganhadores do prêmio por Quina: "))
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+                        elif premiação == 3:
+                            Quadra = int(input("Digite a quantidade de ganhadores do prêmio por Quadra: "))
 
-# Flask stuff:
-instance/
-.webassets-cache
+                        
+                    Divisão_Sena = Premio_sena/Sena
+                    Divisão_Quina = Premio_quina/Quina
+                    Divisão_Quadra = Premio_quadra/Quadra
+                    
 
-# Scrapy stuff:
-.scrapy
+                    print(f"\nPremio Bruto = {Premio_bruto_MS:.2f}")
 
-# Sphinx documentation
-docs/_build/
+                    print(f"\nCada ganhador da Sena irá receber {Divisão_Sena:.2f} Reais")
+                    print(f"Cada ganhador da Quina irá receber {Divisão_Quina:.2f} Reais")
+                    print(f"Cada ganhador da Quadra vai receber {Divisão_Quadra:.2f} Reais\n")
 
-# PyBuilder
-.pybuilder/
-target/
+                    print("Distribuição do dinheiro arrecadado:\n")
+                    print(f" Mega da virada {Mega_da_Virada:.2f} Reais")
+                    print(f" Seguridade Social {Seguridade_social:.2f} Reais")
+                    print(f" Fundo Nacional de Cultura {fnc:.2f} Reais")
+                    print(f" Comite Olímpico e Paralímpico: {Comite_Olimpico_Paralimpico:.2f} Reais")
+                    print(f" Fundo Penintenciário Nacioal: {funpen:.2f} Reais")
+                    print(f" Fundo Nacional De Segurança Pública: {fnsp:.2f} Reais")
+                    print(f" Custos Operacionais: {Custos_Operacionais:.2f} Reais")
+                    print(f" Impostos: {Imposto:.2f} Reais")
+                    
+                    
 
-# Jupyter Notebook
-.ipynb_checkpoints
+                loop_MS = int(input("\nDeseja Refazer alguma Mega Sena ?\n1-(Sim)\n2-(Voltar ao Menu principal)\n"))
 
-# IPython
-profile_default/
-ipython_config.py
+                if menu_mega_sena == 2:
+                    Concursos_MS += 1
+                    Valor_aposta_MS = float(input("Informe o valor de uma aposta na Mega Sena:")) #Registro do valor de uma aposta na mega cena normal.
+                    Quantidade_apostas = int(input(" Digite quantas apostas foram realizadas: ")) #Quantidade de apostas registradas.
+        
+                     #Distribuição do Dinheiro arrecadado
+                    Arrecadação = Valor_aposta_MS * Quantidade_apostas
+                    Premio_bruto_MS = Arrecadação * (46/100)
+                    Premio_bruto_MS += Mega_da_Virada
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+                    Premio_sena = Premio_bruto_MS * (35/100)
+                    Premio_quina = Premio_bruto_MS * (19/100)
+                    Premio_quadra = Premio_bruto_MS * (19/100)
+                    Premio_final_0ou5 = Premio_bruto_MS * (22/100)
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+                    if Concursos_MS % 5 == 0:               #Condicional para caso seja um concurso de número terminado em 5 ou 0
+                        Premio_bruto_MS += Premio_final_0ou5
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
+                    Mega_da_Virada = Premio_bruto_MS * (5/100)
+                    Seguridade_social = Arrecadação * (17.32/100)
+                    fnc = Arrecadação * (3/100)
+                    Comite_Olimpico_Paralimpico = Arrecadação * (1.7/100)
+                    funpen = Arrecadação * (3.14/100)
+                    fnsp = Arrecadação * (9.26/100)
+                    Custos_Operacionais = Arrecadação * (9.57/100)
+                    Imposto = Arrecadação * (10.01/100)
+                    
+                    for premiação in range(1,4,+1):                                               # Estrutura de repetição para registrar a quantidade de ganhadores.
+                        if premiação == 1:
+                            Sena = int(input("Digite a quantidade de ganhadores do prêmio por Sena:"))
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-#poetry.toml
+                        elif premiação == 2:
+                            Quina = int(input("Digite a quantidade de ganhadores do prêmio por Quina: "))
 
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
-#pdm.lock
-#pdm.toml
-.pdm-python
-.pdm-build/
+                        elif premiação == 3:
+                            Quadra = int(input("Digite a quantidade de ganhadores do prêmio por Quadra: "))
 
-# pixi
-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
-#pixi.lock
-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
-#   in the .venv directory. It is recommended not to include this directory in version control.
-.pixi
+                        
+                    Divisão_Sena = Premio_sena/Sena
+                    Divisão_Quina = Premio_quina/Quina
+                    Divisão_Quadra = Premio_quadra/Quadra
+                    
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+                    print(f"\nPremio Bruto = {Premio_bruto_MS:.2f}")
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+                    print(f"\nCada ganhador da Sena irá receber {Divisão_Sena:.2f} Reais")
+                    print(f"Cada ganhador da Quina irá receber {Divisão_Quina:.2f} Reais")
+                    print(f"Cada ganhador da Quadra vai receber {Divisão_Quadra:.2f} Reais\n")
 
-# SageMath parsed files
-*.sage.py
+                    print("Distribuição do dinheiro arrecadado:\n")
+                    print(f" Mega da virada {Mega_da_Virada:.2f} Reais")
+                    print(f" Seguridade Social {Seguridade_social:.2f} Reais")
+                    print(f" Fundo Nacional de Cultura {fnc:.2f} Reais")
+                    print(f" Comite Olímpico e Paralímpico: {Comite_Olimpico_Paralimpico:.2f} Reais")
+                    print(f" Fundo Penintenciário Nacioal: {funpen:.2f} Reais")
+                    print(f" Fundo Nacional De Segurança Pública: {fnsp:.2f} Reais")
+                    print(f" Custos Operacionais: {Custos_Operacionais:.2f} Reais")
+                    print(f" Impostos: {Imposto:.2f} Reais")
+           
+        case 2:
+            print("--QUINA--")
+            print("""Destinação:
+Prêmio Bruto Total = 50%%
+Quina(5 acertos) = 35%% do prêmio bruto
+Quadra(4 acertos) = 15%% do prêmio bruto 
+Terno(3 acertos) = 10%% do prêmio bruto 
+Quina de São João = 15%% do prêmio bruto 
+Acúmulo quando ninguém acerta Quina = 15%% do prêmio bruto
+Acúmulo para o próximo concurso = 10%% do prêmio bruto                   
+Seguridade Social = 17,32%% 
+Fundo Nacional de Cultura(FNC) = 3%% 
+Comitê Olímpico e Paralímpico = 1,7%% 
+Fundo Penitenciário Nacional(FUNPEN) = 3,14%% 
+Fundo Nacional de Segurança Pública (FNSP) = 9,26%% 
+Custos Operacionais (CAIXA) = 9,57%% 
+Outros encargos e taxas legais = 6,01%%\n""")
+            while loop_Q < 2:
+                menu_mega_sena = int(input("""1-Quina \n2-Quina De São João\n"""))
+                if menu_mega_sena == 1:
+                    Valor_aposta_MS = float(input("Informe o valor de uma aposta na Mega Sena:")) #Registro do valor de uma aposta na mega cena normal.
+                    Quantidade_apostas = int(input(" Digite quantas apostas foram realizadas: ")) #Quantidade de apostas registradas.
+                    Arrecadação = Valor_aposta_MS * Quantidade_apostas
+                    Premio_bruto_Q = Arrecadação * (50/100)
+                    Premio_quina = Premio_bruto_Q * (35/100)
+                    Premio_quadra = Premio_bruto_Q * (15/100)
+                    Premio_terno = Premio_bruto_Q * (10/100)
+                    Quina_São_João = Premio_bruto_Q * (15/100)
+                    Q_Sem_acertos = Premio_bruto_Q * (15/100) #Premiação para quando ninguém acertou Quina
+                    Acumulo_P_concurso = Premio_bruto_Q * (10/100) #Acumulo do prêmio para o próximo concurso
+                    Seguridade_social = Arrecadação * (17.32/100)
+                    fnc = Arrecadação * (3/100)
+                    Comite_Olimpico_Paralimpico = Arrecadação * (1.7/100)
+                    funpen = Arrecadação * (3.14/100)
+                    fnsp = Arrecadação * (9.26/100)
+                    Custos_Operacionais = Arrecadação * (9.57/100)
+                    Imposto = Arrecadação * (10.01/100)
 
-# Environments
-.env
-.envrc
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+                    for premiação in range(1,5,+1):                                               # Estrutura de repetição para registrar a quantidade de ganhadores.
+                        if premiação == 1:
+                            Sena = int(input("Digite a quantidade de ganhadores do prêmio por Sena:"))
+                        elif premiação == 2:
+                            Quina = int(input("Digite a quantidade de ganhadores do prêmio por Quina: "))
+                        elif premiação == 3:
+                            Quadra = int(input("Digite a quantidade de ganhadores do prêmio por Quadra: "))
+                            
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
-
-# Abstra
-# Abstra is an AI-powered process automation framework.
-# Ignore directories containing user credentials, local state, and settings.
-# Learn more at https://abstra.io/docs
-.abstra/
-
-# Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#  you could uncomment the following to ignore the entire vscode folder
-# .vscode/
-
-# Ruff stuff:
-.ruff_cache/
-
-# PyPI configuration file
-.pypirc
-
-# Cursor
-#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
-.cursorignore
-.cursorindexingignore
-
-# Marimo
-marimo/_static/
-marimo/_lsp/
-__marimo__/
+    
+    loop = menu_inicial
+       
