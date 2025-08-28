@@ -77,7 +77,7 @@ while int(loop)   != 0:
 
                 while not menu_mega_sena.isdigit() :
                     menu_mega_sena = (input("""1-Mega-Sena \n2-Mega da Virada\n3- Tabela de distribuição\n4-Voltar
-5-Estatísticas Individuais do último jogo"""))
+5-Estatísticas Individuais do último jogo\n"""))
                 
                 if int(menu_mega_sena) == 4:
                     loop_MS = 4
@@ -238,13 +238,9 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     print(f" Fundo Nacional De Segurança Pública: {fnsp_MS:.2f} Reais")
                     print(f" Custos Operacionais: {Custos_Operacionais_MS:.2f} Reais")
                     print(f" Impostos: {imposto_MS:.2f} Reais")
-    
-                    loop_MS = (input("\n1-Reniciar\n2-(Voltar ao Menu principal)\n"))
-                    while not loop_MS.isdigit() or int(loop_MS) == 1 | 2:
-                        print("Digitou errado, tente novamente!")
-                        loop_MS = (input("\n1-Reiniciar\n2-Voltar ao Menu principal\n"))
-                          
-
+                    loop_MS = 1  
+                            
+                        
 
                 if int(menu_mega_sena) == 2:
                     Concursos_MS += 1
