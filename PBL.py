@@ -8,6 +8,7 @@ while not loop.isdigit() or int(loop) == 0 :
 verificação = 0 #variável para entrar no loop de verificação de entrada do usuário no float
  
 #variáveis da Mega Sena
+arrecadação_MS = 0
 premio_bruto_MS = 0
 Concursos_MS = 0    #Contador dos concursos Mega Sena
 Acumulador_F_05 = 0 #  acúmulo feito para os concursos que terminam em 0 ou 5 
@@ -27,6 +28,7 @@ Arrecadação_total_MS = 0
 Mega_da_Virada = 0
 
 #VARIÁVEIS DA QUINA
+arrecadação_Q = 0
 Acumulador_São_João = 0 
 acumulador_F_5 =0
 Acumulo_P_concurso = 0 
@@ -45,7 +47,8 @@ media_Q = 0
 Arrecadação_total_Q = 0
 Quina_São_João = 0
 
-
+#Variáveis da Lotofácil
+arrecadação_LF = 0
 Lotofácil_Independência = 0
 Acumulador_L_independência = 0     
 Acumulador_F_0 = 0 
@@ -144,10 +147,10 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                         quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                     
                     #Distribuição do Dinheiro arrecadado
-                    arrecadação = valor_aposta_MS * float(quantidade_apostas)
-                    Arrecadação_total_MS = arrecadação
-                    premio_bruto_MS = arrecadação * (46/100)
-                    arrecadação -= premio_bruto_MS
+                    arrecadação_MS = valor_aposta_MS * float(quantidade_apostas)
+                    Arrecadação_total_MS = arrecadação_MS
+                    premio_bruto_MS = arrecadação_MS * (46/100)
+                    arrecadação_MS -= premio_bruto_MS
                     if acumulador_sena > 0:
                         premio_bruto_MS += acumulador_sena
                         acumulador_sena = 0
@@ -172,13 +175,13 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     Mega_da_Virada = premio_bruto_MS * (5/100) #Acumulador do prêmio da Virada
                     Acumulador_M_virada += Mega_da_Virada
 
-                    Seguridade_social_MS = arrecadação * (17.32/100)   
-                    fnc_MS = arrecadação * (3/100)
-                    Comite_Olimpico_Paralimpico_MS = arrecadação * (1.7/100)
-                    funpen_MS = arrecadação * (3.14/100)
-                    fnsp_MS = arrecadação * (9.26/100)
-                    Custos_Operacionais_MS = arrecadação * (9.57/100)
-                    imposto_MS = arrecadação * (10.01/100)
+                    Seguridade_social_MS = arrecadação_MS * (17.32/100)   
+                    fnc_MS = arrecadação_MS * (3/100)
+                    Comite_Olimpico_Paralimpico_MS = arrecadação_MS * (1.7/100)
+                    funpen_MS = arrecadação_MS * (3.14/100)
+                    fnsp_MS = arrecadação_MS * (9.26/100)
+                    Custos_Operacionais_MS = arrecadação_MS * (9.57/100)
+                    imposto_MS = arrecadação_MS* (10.01/100)
 
                     
                     ganhadores = 1 
@@ -276,10 +279,10 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     
         
                      #Distribuição do Dinheiro arrecadado
-                    arrecadação = valor_aposta_MS * float(quantidade_apostas)
-                    Arrecadação_total_MS = arrecadação
-                    premio_bruto_MS = arrecadação * (46/100)
-                    arrecadação -= premio_bruto_MS
+                    arrecadação_MS_MS = valor_aposta_MS * float(quantidade_apostas)
+                    Arrecadação_total_MS = arrecadação_MS_MS
+                    premio_bruto_MS = arrecadação_MS_MS * (46/100)
+                    arrecadação_MS -= premio_bruto_MS
                     
                     premio_bruto_MS += Acumulador_M_virada
 
@@ -295,13 +298,13 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
 
                     Mega_da_Virada = premio_bruto_MS * (5/100)
 
-                    Seguridade_social_MS = arrecadação * (17.32/100)   
-                    fnc_MS = arrecadação * (3/100)
-                    Comite_Olimpico_Paralimpico_MS = arrecadação * (1.7/100)
-                    funpen_MS = arrecadação * (3.14/100)
-                    fnsp_MS = arrecadação * (9.26/100)
-                    Custos_Operacionais_MS = arrecadação * (9.57/100)
-                    imposto_MS = arrecadação * (10.01/100)
+                    Seguridade_social_MS = arrecadação_MS * (17.32/100)   
+                    fnc_MS = arrecadação_MS * (3/100)
+                    Comite_Olimpico_Paralimpico_MS = arrecadação_MS* (1.7/100)
+                    funpen_MS = arrecadação_MS * (3.14/100)
+                    fnsp_MS = arrecadação_MS * (9.26/100)
+                    Custos_Operacionais_MS = arrecadação_MS * (9.57/100)
+                    imposto_MS = arrecadação_MS * (10.01/100)
 
                     ganhadores = 1 
                     while ganhadores > 0:
@@ -420,10 +423,10 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                             verificação = 1
                     verificação = 0
 
-                    arrecadação = valor_aposta_Q * int(quantidade_apostas)
-                    Arrecadação_total_Q = arrecadação
-                    Premio_bruto_Q = arrecadação * (50/100)
-                    arrecadação -= Premio_bruto_Q
+                    arrecadação_Q = valor_aposta_Q * int(quantidade_apostas)
+                    Arrecadação_total_Q = arrecadação_Q
+                    Premio_bruto_Q = arrecadação_Q * (50/100)
+                    arrecadação_Q -= Premio_bruto_Q
                     Premio_bruto_Q += Acumulo_P_concurso
                     
                     #aplicação dos acumuladores do jogo passado
@@ -451,13 +454,13 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                     acumulador_F_5 += Concursos_Final_5
                     Acumulo_P_concurso = Premio_bruto_Q * (10/100) #Acumulo do prêmio para o próximo concurso
 
-                    Seguridade_social_Q = arrecadação * (17.32/100)
-                    fnc_Q = arrecadação * (3/100)
-                    Comite_Olimpico_Paralimpico_Q = arrecadação * (1.7/100)
-                    funpen_Q = arrecadação * (3.14/100)
-                    fnsp_Q = arrecadação * (9.26/100)
-                    Custos_Operacionais_Q = arrecadação * (9.57/100)
-                    imposto_Q = arrecadação * (6.01/100)
+                    Seguridade_social_Q = arrecadação_Q * (17.32/100)
+                    fnc_Q = arrecadação_Q * (3/100)
+                    Comite_Olimpico_Paralimpico_Q = arrecadação_Q * (1.7/100)
+                    funpen_Q = arrecadação_Q * (3.14/100)
+                    fnsp_Q = arrecadação_Q * (9.26/100)
+                    Custos_Operacionais_Q = arrecadação_Q * (9.57/100)
+                    imposto_Q = arrecadação_Q * (6.01/100)
 
                     ganhadores = 1 
                     while ganhadores > 0:
@@ -544,9 +547,10 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                             quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                         if int(quantidade_apostas) > 0:
                             verificação = 1
-                    arrecadação = valor_aposta_Q * int(quantidade_apostas)
-                    Arrecadação_total = arrecadação
-                    Premio_bruto_Q = arrecadação * (50/100)
+                    arrecadação_Q = valor_aposta_Q * int(quantidade_apostas)
+                    Arrecadação_total = arrecadação_Q
+                    Premio_bruto_Q = arrecadação_Q * (50/100)
+                    arrecadação_Q -= Premio_bruto_Q
                     Premio_bruto_Q += Acumulo_P_concurso
                     if Concursos_Q % 10 == 5:
                         Premio_bruto_Q += acumulador_F_5
@@ -565,13 +569,13 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
 
                     Acumulo_P_concurso = Premio_bruto_Q * (10/100) #Acumulo do prêmio para o próximo concurso
 
-                    Seguridade_social_Q = arrecadação * (17.32/100)
-                    fnc_Q = arrecadação * (3/100)
-                    Comite_Olimpico_Paralimpico_Q = arrecadação * (1.7/100)
-                    funpen_Q = arrecadação * (3.14/100)
-                    fnsp_Q = arrecadação * (9.26/100)
-                    Custos_Operacionais_Q = arrecadação * (9.57/100)
-                    imposto_Q = arrecadação * (6.01/100)
+                    Seguridade_social_Q = arrecadação_Q * (17.32/100)
+                    fnc_Q = arrecadação_Q * (3/100)
+                    Comite_Olimpico_Paralimpico_Q = arrecadação_Q * (1.7/100)
+                    funpen_Q = arrecadação_Q * (3.14/100)
+                    fnsp_Q = arrecadação_Q * (9.26/100)
+                    Custos_Operacionais_Q = arrecadação_Q * (9.57/100)
+                    imposto_Q = arrecadação_Q * (6.01/100)
 
                     ganhadores = 1 
                     while ganhadores > 0:
@@ -678,10 +682,10 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                         if int(quantidade_apostas) > 0:
                             verificação = 1
                     #Distribuição do Dinheiro arrecadado para o prêmio bruto
-                    arrecadação = Valor_aposta_LF * int(quantidade_apostas)
-                    Arrecadação_total_LF = arrecadação
-                    Premio_bruto_LF = arrecadação * (43.35/100)
-                    arrecadação -= Premio_bruto_LF
+                    arrecadação_LF = Valor_aposta_LF * int(quantidade_apostas)
+                    Arrecadação_total_LF = arrecadação_LF
+                    Premio_bruto_LF = arrecadação_LF * (43.35/100)
+                    arrecadação_LF -= Premio_bruto_LF
 
                     Premio_principal = Premio_bruto_LF * (62/100)
                     Premio_Fixo = Premio_bruto_LF * (15/100)
@@ -697,13 +701,13 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                     Acumulador_L_independência += Lotofácil_Independência
 
                     #distribuição para o resto do dinheiro arrecadado
-                    Seguridade_social = arrecadação * (17.32/100)   
-                    fnc = arrecadação * (3/100)
-                    Comite_Olimpico_Paralimpico = arrecadação * (1.7/100)
-                    funpen = arrecadação * (3.14/100)
-                    fnsp = arrecadação * (9.26/100)
-                    Custos_Operacionais = arrecadação * (9.57/100)
-                    imposto = arrecadação * (12.66/100)
+                    Seguridade_social = arrecadação_LF * (17.32/100)   
+                    fnc = arrecadação_LF * (3/100)
+                    Comite_Olimpico_Paralimpico = arrecadação_LF * (1.7/100)
+                    funpen = arrecadação_LF * (3.14/100)
+                    fnsp = arrecadação_LF * (9.26/100)
+                    Custos_Operacionais = arrecadação_LF * (9.57/100)
+                    imposto = arrecadação_LF * (12.66/100)
                     
                     ganhadores = 1
                     while ganhadores > 0:
@@ -738,6 +742,7 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                     print(f"\nCada ganhador do prêmio principal levará {Divisão_Princial:.2f} Reais")
                     print(f"Cada ganhador do prêmio fixo levará  {Divisão_Fixo:.2f} Reais") 
 
+                media_LF = (Premio_Fixo + Premio_principal)/2
                 if int(menu_lotofácil) == 5:
                     loop_LF = 5
                 if int(loop_LF) == 5:
@@ -773,10 +778,10 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                             verificação = 1 
 
                     #Distribuição do Dinheiro arrecadado para o prêmio bruto
-                    arrecadação = Valor_aposta_LF * int(quantidade_apostas)
-                    Premio_bruto_LF = arrecadação * (43.35/100)
+                    arrecadação_LF = Valor_aposta_LF * int(quantidade_apostas)
+                    Premio_bruto_LF = arrecadação_LF * (43.35/100)
                     Premio_bruto_LF += Acumulador_L_independência
-                    arrecadação -= Premio_bruto_LF
+                    arrecadação_LF -= Premio_bruto_LF
 
                     Premio_principal = Premio_bruto_LF * (62/100)
                     Premio_Fixo = Premio_bruto_LF * (15/100)
@@ -792,13 +797,13 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                     Acumulador_L_independência += Lotofácil_Independência
 
                     #distribuição para o resto do dinheiro arrecadado
-                    Seguridade_social_LF = arrecadação * (17.32/100)   
-                    fnc_LF = arrecadação * (3/100)
-                    Comite_Olimpico_Paralimpico_LF = arrecadação * (1.7/100)
-                    funpen_LF = arrecadação * (3.14/100)
-                    fnsp_LF = arrecadação * (9.26/100)
-                    Custos_Operacionais_LF = arrecadação * (9.57/100)
-                    imposto_LF = arrecadação * (12.66/100)
+                    Seguridade_social_LF = arrecadação_LF * (17.32/100)   
+                    fnc_LF = arrecadação_LF * (3/100)
+                    Comite_Olimpico_Paralimpico_LF = arrecadação_LF * (1.7/100)
+                    funpen_LF = arrecadação_LF * (3.14/100)
+                    fnsp_LF = arrecadação_LF * (9.26/100)
+                    Custos_Operacionais_LF = arrecadação_LF * (9.57/100)
+                    imposto_LF = arrecadação_LF * (12.66/100)
                     
                     ganhadores = 1
                     while ganhadores > 0:
@@ -838,17 +843,90 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
 
                     print(f"\nCada ganhador do prêmio principal levará {Divisão_Princial:.2f} Reais")
                     print(f"Cada ganhador do prêmio fixo levará  {Divisão_Fixo:.2f} Reais")
+                media_LF = (Premio_Fixo + Premio_principal)/2
     
         case 4:
-            print("Voceê deseja acessar as estatísticas gerais de qual loteria?")
-            menu_estatísticas = (input("1-Rentabilidade\n2-Estatísticas individuais\n3-voltar"))
-            while not menu_estatísticas.isdigit():
-                menu_estatísticas = (input("1-Rentabilidade\n2-Estatísticas individuais\n3-voltar"))
+            verificação = 0
+            while verificação == 0:
+                menu_estatísticas = (input("1-Rentabilidade\n2-Estatísticas individuais\n3-voltar\n"))
+                while not menu_estatísticas.isdigit():
+                    menu_estatísticas = (input("1-Rentabilidade\n2-Estatísticas individuais\n3-voltar\n"))
+                if int(menu_estatísticas) == 1 or int(menu_estatísticas) == 2 or int(menu_estatísticas) == 3:
+                    verificação = 1
+            verificação = 0
+
             if int(menu_estatísticas) == 1:
+                #Rentabilidade para os jogadores
                 if media_MS > media_Q and media_MS > media_LF:
                     print("A loteria mais rentável para os jogadores é a Mega Sena ")
                 if media_Q > media_MS and media_Q > media_LF:
                     print("A loteria mais rentável para os jogadores é a Quina")
                 if media_LF > media_MS and media_LF > media_Q:
                     print("A loteria mais rentável para os jogadores é a Lotofácil")
-       
+                if media_MS == media_Q == media_LF:
+                    print("As três são igualmente rentáveis para os jogadores")
+                #Rentabilidade para a Caixa
+                if Arrecadação_total_MS > Arrecadação_total_Q and Arrecadação_total_MS > Arrecadação_total_LF:
+                    print("A loteria mais rentável para caixa é a Mega Sena")
+                if Arrecadação_total_Q > Arrecadação_total_MS and Arrecadação_total_Q > Arrecadação_total_LF:
+                    print("A loteria mais rentável para caixa é a Quina")
+                if Arrecadação_total_LF > Arrecadação_total_MS and Arrecadação_total_LF > Arrecadação_total_Q:
+                    print("A loteria mais rentável apra a caixa é a Lotofácil")
+                if Arrecadação_total_MS == Arrecadação_total_Q == Arrecadação_total_LF:
+                    print("As loterias foram igualmente rentáveis para a Caixa")
+                #Rentabilidade para os fundos
+                if  arrecadação_MS > arrecadação_Q and arrecadação_MS > arrecadação_LF:
+                    print("A loteria mais rentável para os fundos é a Mega Sena")
+                if arrecadação_Q > arrecadação_MS and arrecadação_Q > arrecadação_LF:
+                    print("A aloteria mais rentável para os fundos é a Quina")
+                if arrecadação_LF > arrecadação_MS and arrecadação_LF > arrecadação_Q:
+                    print(" A loteria mais rentável para os fundos é a Lotofácil")
+                if arrecadação_MS == arrecadação_Q == arrecadação_LF:
+                    print("As três loterias são igualmente rentáveis para os fundos")
+
+            
+            if int( menu_estatísticas) == 2:
+                print("--Estatítisticas da Mega Sena--")
+
+                print(f"A arrecadação total do último jogo foi: {Arrecadação_total_MS}\n")         
+                print(f"A média dos prêmios é: {media_MS:.2f}")
+
+                print("Distribuição do dinheiro arrecadado para os fundos:\n")
+                print(f" Mega da virada {Mega_da_Virada:.2f} Reais")
+                print(f" Seguridade Social {Seguridade_social_MS:.2f} Reais")
+                print(f" Fundo Nacional de Cultura {fnc_MS:.2f} Reais")
+                print(f" Comite Olímpico e Paralímpico: {Comite_Olimpico_Paralimpico_MS:.2f} Reais")
+                print(f" Fundo Penintenciário Nacioal: {funpen_MS:.2f} Reais")
+                print(f" Fundo Nacional De Segurança Pública: {fnsp_MS:.2f} Reais")
+                print(f" Custos Operacionais: {Custos_Operacionais_MS:.2f} Reais")
+                print(f" Impostos: {imposto_MS:.2f} Reais\n")
+
+                print("---Estatísticas da Quina---")
+
+                print(f"A arrecadação total do último jogo foi: {Arrecadação_total_Q}\n") 
+                print(f"A média dos prêmios é: {media_Q:.2f}") 
+
+                print("Distribuição do dinheiro arrecadado para os fundos:\n")
+                print(f" Quina de São João {Quina_São_João:.2f} Reais")
+                print(f" Seguridade Social {Seguridade_social_Q:.2f} Reais")
+                print(f" Fundo Nacional de Cultura {fnc_Q:.2f} Reais")
+                print(f" Comite Olímpico e Paralímpico: {Comite_Olimpico_Paralimpico_Q:.2f} Reais")
+                print(f" Fundo Penintenciário Nacioal: {funpen_Q:.2f} Reais")
+                print(f" Fundo Nacional De Segurança Pública: {fnsp_Q:.2f} Reais")
+                print(f" Custos Operacionais: {Custos_Operacionais_Q:.2f} Reais")
+                print(f" Impostos: {imposto_Q:.2f} Reais\n")
+
+                print("----Estatísticas da Lotofácil----")
+
+                print(f"Valor total arrecadado: {Arrecadação_total_LF}")
+                print(f"a média dos prêmios é de: {media_LF}")
+
+                print("\nDistribuição do dinheiro arrecadado para os fundos:")
+                print(f" Lotofácil da independência {Lotofácil_Independência:.2f} Reais")
+                print(f" Seguridade Social {Seguridade_social_LF:.2f} Reais")
+                print(f" Fundo Nacional de Cultura {fnc_LF:.2f} Reais")
+                print(f" Comite Olímpico e Paralímpico: {Comite_Olimpico_Paralimpico_LF:.2f} Reais")
+                print(f" Fundo Penintenciário Nacioal: {funpen_LF:.2f} Reais")
+                print(f" Fundo Nacional De Segurança Pública: {fnsp_LF:.2f} Reais")
+                print(f" Custos Operacionais: {Custos_Operacionais_LF:.2f} Reais")
+                print(f" Impostos: {imposto_LF:.2f} Reais\n")
