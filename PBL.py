@@ -63,7 +63,9 @@ imposto_LF = 0
 acumulador_principal = 0
 acumulador_fixo = 0
 media_LF = 0
-Arrecadação_total_LF = 0 
+Arrecadação_total_LF = 0
+Premio_Fixo = 0
+Premio_principal = 0
 
 
 while int(loop)   != 0:
