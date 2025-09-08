@@ -1,9 +1,17 @@
-amarelo= "\033[33;1m"
-neutro ="\033[m"
+'''Autor: Gabriel Passos Mota
+Componente Curricular: Algoritmos I
+Concluido em: 08/09/2025
+Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.'''
+AMARELO= "\033[33;1m"
+NEUTRO ="\033[m"
 
 loop = (input("Digite um número diferente de 0 para adentrar o programa: "))
-while not loop.isdigit() or int(loop) == 0 :
-    loop = (input("Digite um número diferente de 0: "))
+while not loop.isdigit():
+    loop = (input("Digite um número: "))
         
 verificação = 0 #variável para entrar no loop de verificação de entrada do usuário no float
  
@@ -51,7 +59,7 @@ Quina_São_João = 0
 arrecadação_LF = 0
 Lotofácil_Independência = 0
 Acumulador_L_independência = 0     
-Acumulador_F_0 = 0 
+Acumulador_F_0 = 0  #acumulador para concursos de final 0
 Concursos_LF = 0
 Seguridade_social_LF = 0
 fnc_LF = 0
@@ -68,17 +76,19 @@ Premio_Fixo = 0
 Premio_principal = 0
 
 
-while int(loop)   != 0:
-    print(f"{amarelo} ---MENU---{neutro} \n")
-    menu_inicial= (input("1-Mega-Sena\n2-Quina\n3-Lotofácil\n4-Estatísticas Gerais\n0-Sair\n"))
 
+while int(loop)   != 0:
+    print(f"{AMARELO} ---MENU PRINCIPAL---{NEUTRO} \n")
+    menu_inicial= (input("1-Mega-Sena\n2-Quina\n3-Lotofácil\n4-Estatísticas Gerais\n0-Sair\n"))
+    
+    #Atribuição das variáveis para os Sub-Menus
     loop_MS = menu_inicial
     loop_Q = menu_inicial
     loop_LF = menu_inicial
     loop = menu_inicial
 
     while not menu_inicial.isdigit() or int(menu_inicial) == 1 | 2 | 3 | 4 | 0:
-        print("Digita a parada certa ai abençoado(a)")
+        print(f"{AMARELO} ---MENU PRINCIPAL---{NEUTRO} \n")
         menu_inicial = (input("1-Mega-Sena\n2-Quina\n3-Lotofácil\n4-Estatísticas Gerais\n0-Sair\n")) 
 
         loop_MS = menu_inicial
@@ -87,22 +97,26 @@ while int(loop)   != 0:
         loop = menu_inicial
     
     match int(menu_inicial):
+
+
+
         case 1:
             
             while int(loop_MS) == 1:
-                print("-----Menu da Mega Sena-----")
+                print(f"{AMARELO}-----Menu da Mega Sena-----{NEUTRO}")
                 menu_mega_sena = (input("""1-Mega-Sena \n2-Mega da Virada\n3-Tabela de distribuição\n4-Voltar
-5-Estatísticas Individuais do último jogo"""))
+5-Estatísticas Individuais do último jogo\n"""))
 
                 while not menu_mega_sena.isdigit() :
-                    menu_mega_sena = (input("""1-Mega-Sena \n2-Mega da Virada\n3- Tabela de distribuição\n4-Voltar
+                    print(f"{AMARELO}-----Menu da Mega Sena-----{NEUTRO}")
+                    menu_mega_sena = (input("""1-Mega-Sena \n2-Mega da Virada\n3-Tabela de distribuição\n4-Voltar
 5-Estatísticas Individuais do último jogo\n"""))
                 
                 if int(menu_mega_sena) == 4:
                     loop_MS = 4
                 if int(menu_mega_sena) == 3:
                     print("--MEGA-SENA--")
-                    print(f"""Destinação:{amarelo}
+                    print(f"""Destinação:{AMARELO}
 Prêmio Bruto Total = 46%%
 Sena(6 acertos) = 35%% do prêmio bruto
 Quina(5 acertos) = 19%% do prêmio bruto 
@@ -115,7 +129,7 @@ Comitê Olímpico e Paralímpico = 1,7%%
 Fundo Penitenciário Nacional(FUNPEN) = 3,14%% 
 Fundo Nacional de Segurança Pública (FNSP) = 9,26%% 
 Custos Operacionais (CAIXA) = 9,57%% 
-Outros encargos e taxas legais = 10,01%%{neutro}\n""")                    
+Outros encargos e taxas legais = 10,01%%{NEUTRO}\n""")                    
 
                 if int(menu_mega_sena) == 1:
                     
@@ -136,8 +150,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     while verificação == 0:
                         quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                         while not quantidade_apostas.isdigit():
-
-                            print("Digita a parada certa ai abençoado(a)")
+      
                             quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                         if int(quantidade_apostas) > 0:
                             verificação = 1
@@ -145,14 +158,15 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     
                     while not quantidade_apostas.isdigit():
 
-                        print("Digita a parada certa ai abençoado(a)")
                         quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                     
-                    #Distribuição do Dinheiro arrecadado
+                    #Cálculo do valor total arrecadado e do prêmio Bruto
                     arrecadação_MS = valor_aposta_MS * float(quantidade_apostas)
                     Arrecadação_total_MS = arrecadação_MS
                     premio_bruto_MS = arrecadação_MS * (46/100)
                     arrecadação_MS -= premio_bruto_MS
+
+                    #Aplicação dos prêmios que não tiveram ganhadores
                     if acumulador_sena > 0:
                         premio_bruto_MS += acumulador_sena
                         acumulador_sena = 0
@@ -163,6 +177,12 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                         premio_bruto_MS += acumulador_quadra
                         acumulador_quadra = 0
 
+                    #Aplicação do acumulador para prêmios terminados em 5 ou 0
+                    if Concursos_MS % 5 == 0:               
+                        premio_bruto_MS += Acumulador_F_05
+                        Acumulador_F_05 = 0
+
+                    #Distribuição do prêmio bruto
                     premio_sena = premio_bruto_MS * (35/100)
                     premio_quina = premio_bruto_MS * (19/100)
                     premio_quadra = premio_bruto_MS * (19/100)
@@ -170,13 +190,10 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     Premio_final_0ou5 = premio_bruto_MS * (22/100)
                     Acumulador_F_05 += Premio_final_0ou5
 
-                    if Concursos_MS % 5 == 0:               #Condicional para caso seja um concurso de número terminado em 5 ou 0
-                        premio_bruto_MS += Acumulador_F_05
-                        Acumulador_F_05 = 0
-
-                    Mega_da_Virada = premio_bruto_MS * (5/100) #Acumulador do prêmio da Virada
+                    Mega_da_Virada = premio_bruto_MS * (5/100) 
                     Acumulador_M_virada += Mega_da_Virada
 
+                    #Distribuição para os fundos
                     Seguridade_social_MS = arrecadação_MS * (17.32/100)   
                     fnc_MS = arrecadação_MS * (3/100)
                     Comite_Olimpico_Paralimpico_MS = arrecadação_MS * (1.7/100)
@@ -195,7 +212,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                         
                         sena = (input("Digite a quantidade de ganhadores do prêmio por Sena:"))
                         while not sena.isdigit():
-                            print("Digite NÚMEROS")
+                            
                             sena = (input("Digite a quantidade de ganhadores do prêmio por Sena:"))
                         if int(sena) == 0:
                             acumulador_sena += premio_sena
@@ -210,7 +227,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                        
                         quadra = (input("Digite a quantidade de ganhadores do prêmio por Quadra: "))
                         while not quadra.isdigit():
-                            print("Você tem que digitar um número!!!")
+                            
                             quadra = (input("Digite a quantidade de ganhadores do prêmio por Quadra: "))
                         if int(quadra) == 0:
                                 acumulador_quadra += premio_quadra
@@ -218,7 +235,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     
 
                         if quant_ganhadores >0:
-                            print("funcionou") 
+                             
                             ganhadores = 0
 
                     divisão_Sena = 0
@@ -239,7 +256,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     print(f"Cada ganhador da Quina irá receber {divisão_Quina:.2f} Reais")
                     print(f"Cada ganhador da Quadra vai receber {divisão_Quadra:.2f} Reais\n")
 
-                    media_MS = int(premio_sena + premio_quina + premio_quadra)/3
+                    media_MS = int(premio_sena + premio_quina + premio_quadra)/(int(sena + quina + quadra) )
 
                 #Estatísticas individuais dos jogos da Mega Sena    
                 if int(menu_mega_sena) == 5:
@@ -367,7 +384,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     if int(quadra) != 0:
                         divisão_Quadra = int(premio_quadra)/int(quadra)  
 
-                    media_MS = int(premio_sena + premio_quina + premio_quadra)/3
+                    media_MS = int(premio_sena + premio_quina + premio_quadra)/(int(sena + quina + quadra))
                     
 
                     print(f"\nPremio Bruto = {premio_bruto_MS:.2f}")
@@ -376,15 +393,18 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     print(f"Cada ganhador da Quina irá receber {divisão_Quina:.2f} Reais")
                     print(f"Cada ganhador da Quadra vai receber {divisão_Quadra:.2f} Reais\n")
 
-                             
+
+
+
         case 2:
 
             while int(loop_Q) == 2:
-                print(f"{amarelo}------MENU da Quina------{neutro}")
+                print(f"{AMARELO}------MENU da Quina------{NEUTRO}")
                 menu_Quina = (input("""1-Quina \n2-Quina De São João\n3-distribuição\n4-Voltar
 5-Estatísticas Individuais do último jogo\n"""))
 
                 while not menu_Quina.isdigit():
+                    print(f"{AMARELO}------MENU da Quina------{NEUTRO}")
                     menu_Quina = (input("""1-Mega-Sena \n2-Mega da Virada\n3- Tabela de distribuição\n4-Voltar
 5-Estatísticas individuais do último Jogo\n"""))
                 menu_Quina = int(menu_Quina)
@@ -392,7 +412,7 @@ Outros encargos e taxas legais = 10,01%%{neutro}\n""")
                     loop_Q = 4
                 if int(menu_Quina) == 3:
                     print("--QUINA--")
-                    print(f"""Destinação:{amarelo}
+                    print(f"""Destinação:{AMARELO}
 Prêmio Bruto Total = 50%%
 Quina(5 acertos) = 35%% do prêmio bruto
 Quadra(4 acertos) = 15%% do prêmio bruto 
@@ -406,7 +426,7 @@ Comitê Olímpico e Paralímpico = 1,7%%
 Fundo Penitenciário Nacional(FUNPEN) = 3,14%% 
 Fundo Nacional de Segurança Pública (FNSP) = 9,26%% 
 Custos Operacionais (CAIXA) = 9,57%% 
-Outros encargos e taxas legais = 6,01%%{neutro}\n""")
+Outros encargos e taxas legais = 6,01%%{NEUTRO}\n""")
                 if menu_Quina == 1:
                     Concursos_Q +=1
                     while verificação ==0:  
@@ -505,7 +525,7 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                         divisão_Quadra = premio_quadra/int(quadra)
                     if int(terno) > 0:
                         divisão_Terno = premio_terno/int(terno)
-                    media_Q = float(premio_quina + premio_quadra + premio_terno)/3
+                    media_Q = float(premio_quina + premio_quadra + premio_terno)/(int(quina + quadra + terno))
 
                     print(f"\nPremio Bruto = {Premio_bruto_Q:.2f}")
 
@@ -558,7 +578,7 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                         Premio_bruto_Q += acumulador_F_5
                     
 
-                    #distribuição do prêmio caso não tenham acertado a quina
+                    #distribuição do prêmio bruto para as premiações
                     premio_quina = Premio_bruto_Q * (35/100)
                     premio_quadra = Premio_bruto_Q * (15/100)
                     premio_terno = Premio_bruto_Q * (10/100)
@@ -631,7 +651,7 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                         divisão_Quadra = premio_quadra/int(quadra)
                     if int(terno) > 0:
                         divisão_Terno = premio_terno/int(terno)
-                    media_Q = float(premio_quina + premio_quadra + premio_terno)/3
+                    media_Q = float(premio_quina + premio_quadra + premio_terno)/(int(quina + quadra + terno))
                     
                     print(f"\nPremio Bruto = {Premio_bruto_Q:.2f}")
 
@@ -639,10 +659,13 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                     print(f"Cada ganhador da Quadra irá receber {divisão_Quadra:.2f} Reais")
                     print(f"Cada ganhador do Terno vai receber {divisão_Terno:.2f} Reais\n")
 
+
+
+        
         case 3:
             
             while int(loop_LF) == 3:
-                print("-----MENU-----")
+                print(f"{AMARELO}-----Menu da Lotofácil-----{NEUTRO}")
                 menu_lotofácil = (input("""1-lotofácil \n2-lotofácil da independência\n3-Tabela de distribuição\n4-Voltar
 5-Estatítiscas Individuais\n"""))
                 while not menu_lotofácil.isdigit():
@@ -653,7 +676,7 @@ Outros encargos e taxas legais = 6,01%%{neutro}\n""")
                     loop_LF = 4
                 if menu_lotofácil == 3:
                     print("-----LOTOFÁCIL-----")
-                    print(f"""Destinação:{amarelo}
+                    print(f"""Destinação:{AMARELO}
 Prêmio Bruto Total = 43,35%%
 prêmios princiaps:(15 e 14 acertos) = 35%% do prêmio bruto
 Lotofácil da independência(acumulo anual) = 13%% do prêmio bruto 
@@ -665,17 +688,19 @@ Comitê Olímpico e Paralímpico = 1,7%%
 Fundo Penitenciário Nacional(FUNPEN) = 3,14%% 
 Fundo Nacional de Segurança Pública (FNSP) = 9,26%% 
 Custos Operacionais (CAIXA) = 9,57%% 
-Outros encargos e taxas legais = 12,66%%{neutro}\n""")
+Outros encargos e taxas legais = 12,66%%{NEUTRO}\n""")
                 if menu_lotofácil == 1:
                     Concursos_LF += 1
-                    while verificação ==0:  
+                    verificação = 0
+                    while verificação == 0:  
                         Valor_aposta_LF = input("Informe o valor de uma aposta na Lotofácil:")        
                         if Valor_aposta_LF.replace('.','',1).isdigit():
                             Valor_aposta_LF= float(Valor_aposta_LF)
                             if Valor_aposta_LF > 0:
                                 verificação = 1
-                    verificação = 0   
- 
+
+
+                    verificação = 0
                     while verificação == 0:
                         quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                         while not quantidade_apostas.isdigit():
@@ -703,13 +728,13 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                     Acumulador_L_independência += Lotofácil_Independência
 
                     #distribuição para o resto do dinheiro arrecadado
-                    Seguridade_social = arrecadação_LF * (17.32/100)   
-                    fnc = arrecadação_LF * (3/100)
-                    Comite_Olimpico_Paralimpico = arrecadação_LF * (1.7/100)
-                    funpen = arrecadação_LF * (3.14/100)
-                    fnsp = arrecadação_LF * (9.26/100)
-                    Custos_Operacionais = arrecadação_LF * (9.57/100)
-                    imposto = arrecadação_LF * (12.66/100)
+                    Seguridade_social_LF = arrecadação_LF * (17.32/100)   
+                    fnc_LF = arrecadação_LF * (3/100)
+                    Comite_Olimpico_Paralimpico_LF = arrecadação_LF * (1.7/100)
+                    funpen_LF = arrecadação_LF * (3.14/100)
+                    fnsp_LF = arrecadação_LF * (9.26/100)
+                    Custos_Operacionais_LF = arrecadação_LF * (9.57/100)
+                    imposto_LF = arrecadação_LF * (12.66/100)
                     
                     ganhadores = 1
                     while ganhadores > 0:
@@ -744,11 +769,12 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                     print(f"\nCada ganhador do prêmio principal levará {Divisão_Princial:.2f} Reais")
                     print(f"Cada ganhador do prêmio fixo levará  {Divisão_Fixo:.2f} Reais") 
 
-                media_LF = (Premio_Fixo + Premio_principal)/2
+                    media_LF = (Premio_Fixo + Premio_principal)/(int(ganhadores_principal + ganhadores_Fixo))
                 if int(menu_lotofácil) == 5:
                     loop_LF = 5
                 if int(loop_LF) == 5:
                     print(f"Valor total arrecadado: {Arrecadação_total_LF}")
+                    print(f"A média dos prêmios é {media_LF}")
                     print("\nDistribuição do dinheiro arrecadado:")
                     print(f" Lotofácil da independência {Lotofácil_Independência:.2f} Reais")
                     print(f" Seguridade Social {Seguridade_social_LF:.2f} Reais")
@@ -763,14 +789,15 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
 
                 if menu_lotofácil == 2:
                     Concursos_LF += 1
+                    verificação = 0
                     while verificação ==0:  
                         Valor_aposta_LF = input("Informe o valor de uma aposta na Lotofácil:")        
                         if Valor_aposta_LF.replace('.','',1).isdigit():
                             Valor_aposta_LF= float(Valor_aposta_LF)
                             if Valor_aposta_LF > 0:
                                 verificação = 1
-                    verificação = 0   
- 
+                      
+                    verificação = 0
                     while verificação == 0:
                         quantidade_apostas = (input(" Digite quantas apostas foram realizadas: "))
                         while not quantidade_apostas.isdigit():
@@ -828,10 +855,10 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                         
                         if ganhadores_principal == 0:
                             Premio_Fixo += Premio_principal
-                            Premio_Fixo = 0
+                            Premio_principal = 0
                         if ganhadores_Fixo == 0:
                             Premio_principal += Premio_Fixo
-                            Premio_principal = 0
+                            Premio_Fixo = 0
                     
                     Divisão_Princial = 0
                     Divisão_Fixo = 0
@@ -845,13 +872,15 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
 
                     print(f"\nCada ganhador do prêmio principal levará {Divisão_Princial:.2f} Reais")
                     print(f"Cada ganhador do prêmio fixo levará  {Divisão_Fixo:.2f} Reais")
-                media_LF = (Premio_Fixo + Premio_principal)/2
+                    media_LF = (Premio_Fixo + Premio_principal)/(int(ganhadores_principal + ganhadores_Fixo))
     
         case 4:
             verificação = 0
             while verificação == 0:
+                print(f"{AMARELO}---Menu das Estatísticas Gerais---{NEUTRO}")
                 menu_estatísticas = (input("1-Rentabilidade\n2-Estatísticas individuais\n3-voltar\n"))
                 while not menu_estatísticas.isdigit():
+                    print(f"{AMARELO}---Menu das Estatísticas Gerais---{NEUTRO}")
                     menu_estatísticas = (input("1-Rentabilidade\n2-Estatísticas individuais\n3-voltar\n"))
                 if int(menu_estatísticas) == 1 or int(menu_estatísticas) == 2 or int(menu_estatísticas) == 3:
                     verificação = 1
@@ -877,15 +906,54 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                 if Arrecadação_total_MS == Arrecadação_total_Q == Arrecadação_total_LF:
                     print("As loterias foram igualmente rentáveis para a Caixa")
                 #Rentabilidade para os fundos
-                if  arrecadação_MS > arrecadação_Q and arrecadação_MS > arrecadação_LF:
-                    print("A loteria mais rentável para os fundos é a Mega Sena")
-                if arrecadação_Q > arrecadação_MS and arrecadação_Q > arrecadação_LF:
-                    print("A aloteria mais rentável para os fundos é a Quina")
-                if arrecadação_LF > arrecadação_MS and arrecadação_LF > arrecadação_Q:
-                    print(" A loteria mais rentável para os fundos é a Lotofácil")
-                if arrecadação_MS == arrecadação_Q == arrecadação_LF:
-                    print("As três loterias são igualmente rentáveis para os fundos")
+                if  Seguridade_social_MS > Seguridade_social_Q and Seguridade_social_MS > Seguridade_social_LF:
+                    print("A loteria mais rentável para o fundo de seguridade social é a Mega Sena")
+                elif Seguridade_social_Q > Seguridade_social_LF and Seguridade_social_Q > Seguridade_social_MS:
+                    print("A loteria mais rentável para o fundod de Seguridade Social é a Quina")
+                elif Seguridade_social_LF > Seguridade_social_MS and Seguridade_social_LF > Seguridade_social_Q:
+                    print("A loteria mais rentável para o fundo de Seguridade social é a Lotofácil")
 
+                if fnc_MS > fnc_Q and fnc_MS > fnc_LF:
+                    print("A loteria mais rentável para o fundo nacional de cultura é a Mega Sena")
+                elif fnc_Q > fnc_MS and fnc_Q> fnc_LF:
+                    print("A loteria mais rentável para o fundo nacional de cultura é a Quina")
+                elif fnc_LF > fnc_Q and fnc_LF> fnc_MS:
+                    print("A loteria mais rentável para o fundo nacional de cultura é a Lotofácil")
+
+                if Comite_Olimpico_Paralimpico_MS > Comite_Olimpico_Paralimpico_Q and Comite_Olimpico_Paralimpico_MS > Comite_Olimpico_Paralimpico_LF:
+                    print("A loteria mais rentável para o Comite olímpico e paralímpico é a Mega Sena")
+                elif Comite_Olimpico_Paralimpico_Q > Comite_Olimpico_Paralimpico_MS and Comite_Olimpico_Paralimpico_Q > Comite_Olimpico_Paralimpico_LF:
+                    print("A loteria mais rentável para o Comite olímpico e paralímpico é a Quina")
+                elif Comite_Olimpico_Paralimpico_LF > Comite_Olimpico_Paralimpico_Q and Comite_Olimpico_Paralimpico_LF > Comite_Olimpico_Paralimpico_MS:
+                    print("A loteria mais rentável para o Comite olímpico e paralímpico é a Lotofácil")
+
+                if funpen_MS > funpen_Q and funpen_MS > funpen_LF:
+                    print("A loteria mais rentável para o fundo nacional penintenciário é a Mega Sena")
+                elif funpen_Q > funpen_MS and funpen_Q > funpen_LF:
+                    print("A loteria mais rentável para o fundo nacional penintenciário é a Quina")
+                elif funpen_LF > funpen_Q and funpen_LF > funpen_MS:
+                    print("A loteria mais rentável para o fundo nacional penintenciário é a Lotofácil")
+
+                if fnsp_MS > fnsp_Q  and fnsp_MS> fnsp_LF:
+                    print("A loteria mais rentável para o fundo nacional de segurança pública é a Mega Sena ")
+                elif fnsp_Q > fnsp_MS and fnsp_Q > fnsp_LF:
+                    print("A loteria mais rentável para o fundo nacional de segurança pública é a Quina")
+                elif fnsp_LF > fnsp_Q and fnsp_LF > fnsp_MS:
+                    print("A loteria mais rentável para o fundo nacional de segurança pública é a Lotofácil")
+
+                if Custos_Operacionais_MS > Custos_Operacionais_Q and Custos_Operacionais_MS > Custos_Operacionais_LF:
+                    print("A loteria mais rentável para os custos operacionais é a Mega Sena")
+                elif Custos_Operacionais_Q > Custos_Operacionais_MS and Custos_Operacionais_Q > Custos_Operacionais_LF:
+                    print("A loteria mais rentável para os custos operacionais é a Quina")
+                elif Custos_Operacionais_LF > Custos_Operacionais_Q and Custos_Operacionais_LF > Custos_Operacionais_MS:
+                    print("A loteria mais rentável para os custos operacionais é a Lotofácil")
+
+                if imposto_MS > imposto_Q and imposto_MS> imposto_LF:
+                    print("A loteria mais rentável para a arrecadação de impostos é a Mega Sena")
+                elif imposto_Q > imposto_MS and imposto_Q > imposto_LF:
+                    print("A loteria mais rentável para a arrecadação de impostos é a Quina")
+                elif imposto_LF > imposto_Q and imposto_LF> imposto_MS:
+                    print("A loteria mais rentável para a arrecadação de impostos é a Lotofácil")
             
             if int( menu_estatísticas) == 2:
                 print("--Estatítisticas da Mega Sena--")
@@ -932,3 +1000,6 @@ Outros encargos e taxas legais = 12,66%%{neutro}\n""")
                 print(f" Fundo Nacional De Segurança Pública: {fnsp_LF:.2f} Reais")
                 print(f" Custos Operacionais: {Custos_Operacionais_LF:.2f} Reais")
                 print(f" Impostos: {imposto_LF:.2f} Reais\n")
+
+if int(loop) == 0:
+    print("Saindo do Programa...")
